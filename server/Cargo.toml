@@ -6,3 +6,5 @@ edition = "2021"
 [dependencies]
 logger = { path = "../logger" }
 log = { workspace = true }
+tokio = { version = "1.38.0", features = ["full"] }
+async-openai = "0.23.3"
