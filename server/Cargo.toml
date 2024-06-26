@@ -3,8 +3,16 @@ name = "server"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+path = "src/main.rs"
+name = "server"
+
 [dependencies]
 logger = { path = "../logger" }
 log = { workspace = true }
 tokio = { version = "1.38.0", features = ["full"] }
 async-openai = "0.23.3"
+actix-web = "4.8.0"
