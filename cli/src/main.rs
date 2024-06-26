@@ -1,6 +1,5 @@
 mod prompt;
 mod args;
-mod logger;
 mod repl;
 
 fn main() {

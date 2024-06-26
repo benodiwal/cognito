@@ -1,5 +1,4 @@
 use std::env;
-
 use env_logger::Builder;
 
 pub fn setup() {

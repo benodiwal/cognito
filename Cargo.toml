@@ -1,6 +1,11 @@
 [workspace]
 members = [
-    "cli"
+    "cli", 
+    "logger", 
+    "server"
 ]
 
 resolver = "2"
+
+[workspace.dependencies]
+log = "0.4.21"

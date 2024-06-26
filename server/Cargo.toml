@@ -1,11 +1,8 @@
 [package]
-name = "cli"
+name = "server"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-clap = { version = "4.5.7", features = ["derive"] }
-lazy_static = "1.5.0"
 logger = { path = "../logger" }
 log = { workspace = true }
-rustyline = "14.0.0"
