@@ -2,6 +2,9 @@ use clap::Parser;
 use utils::HELP_MESSAGES;
 
 mod utils;
+mod prompt;
+
+pub use prompt::read_prompt;
 
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
