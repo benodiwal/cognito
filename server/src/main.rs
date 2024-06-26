@@ -1,12 +1,11 @@
 use std::{error::Error, net::TcpListener};
 
-mod routes;
-
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
     logger::setup();
 
-    let listener = TcpListener::bind("127.0.0.1:8082")?;
+    let settings = server::configurations::get_configurations()?;
+    let listener = TcpListener::bind(format!("{}:{}", settings.get_host(), settings.get_application_port()))?;
     server::run(listener).await?.await?;
 
     Ok(())
