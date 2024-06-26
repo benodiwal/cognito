@@ -3,7 +3,7 @@ use serde_derive::Deserialize;
 
 #[derive(Deserialize, Debug)]
 pub struct Settings {
-    application_port: u16,
+    server_port: u16,
     host: String,
 }
 
@@ -17,7 +17,7 @@ pub fn get_configurations() -> Result<Settings, config::ConfigError> {
 
 impl Settings {
     pub fn get_application_port(&self) -> u16 {
-        self.application_port
+        self.server_port
     }
 
     pub fn get_host(&self) -> &str {
