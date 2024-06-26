@@ -5,6 +5,7 @@ lazy_static! {
         String::from("Where to load the model path from"),
         String::from("Prompt to use"),
         String::from("File containing the prompt"),
+        String::from("Run in REPL mode"),
         String::from("Number of threads to use"),
     ];
 }

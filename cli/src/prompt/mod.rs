@@ -1,7 +1,8 @@
-use super::Args;
 use std::fs::read_to_string;
+use crate::args::Args;
+use log::error;
 
-pub fn read_prompt(args: &Args) -> String {
+pub fn read(args: &Args) -> String {
     if let Some(file_path) = &args.prompt_file {
         match read_to_string(file_path) {
             Ok(mut prompt) => {
@@ -14,14 +15,16 @@ pub fn read_prompt(args: &Args) -> String {
                 prompt
             },
             Err(err) => {
-                log::error!("Error reading prompt from {}: {}", file_path, err);
+                error!("Error reading prompt from {}: {}", file_path, err);
                 std::process::exit(1);
             },
         }
     } else if let Some(prompt) = &args.prompt {
         prompt.clone()
+    } else if args.repl {
+        "".to_string()
     } else {
-        log::error!("No prompt or prompt file was provided. See --help");
+        error!("No prompt or prompt file was provided. See --help");
         std::process::exit(1);
     }
 }
