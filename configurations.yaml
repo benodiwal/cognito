@@ -1,2 +1,2 @@
-application_port: 8002
+server_port: 8002
 host: "127.0.0.1"
