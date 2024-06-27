@@ -7,6 +7,9 @@ mod utils;
 #[command(author, version, about, long_about = None)]
 pub struct Args {
 
+    #[arg(long, short, default_value = None, help = HELP_MESSAGES[0].as_str())]
+    pub config: Option<String>,
+
     #[arg(long, short, default_value = None, help = HELP_MESSAGES[1].as_str())]
     pub prompt: Option<String>,
 

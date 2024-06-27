@@ -18,3 +18,4 @@ log = { workspace = true }
 rustyline = "14.0.0"
 tokio = { workspace = true }
 reqwest = { workspace = true }
+dirs = "5.0.1"
