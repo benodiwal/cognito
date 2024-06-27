@@ -1,6 +1,4 @@
-mod prompt;
-mod args;
-mod repl;
+use cli::*;
 
 fn main() {
     logger::setup();
