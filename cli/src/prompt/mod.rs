@@ -1,11 +1,22 @@
 use std::fs::read_to_string;
-use crate::{args::Args, client::new_api_client};
+use crate::{args::Args, client::ApiClient};
 use log::error;
+use serde_json::json;
 
-pub async fn handle_prompt() {
-    let api_client = new_api_client();
-    let res = api_client.get("/health").await.unwrap();
-    println!("{}", res);
+pub async fn handle_prompt(client: &ApiClient, prompt: &str) {
+    let json_data = json!({
+        "prompt": prompt,
+    });
+
+    let response = client.post("/process_prompt", &json_data).await;
+    match response {
+        Ok(res) => {
+            println!("{}", res);
+        },
+        Err(err) => {
+            error!("Error in processing prompt: {}", err);
+        }
+    }
 }
 
 pub fn read(args: &Args) -> String {

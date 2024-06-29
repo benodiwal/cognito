@@ -525,6 +525,9 @@ dependencies = [
  "logger",
  "reqwest",
  "rustyline",
+ "serde",
+ "serde_derive",
+ "serde_json",
  "tokio",
 ]
 
@@ -2236,6 +2239,7 @@ dependencies = [
  "reqwest",
  "serde",
  "serde_derive",
+ "serde_json",
  "tokio",
 ]
 

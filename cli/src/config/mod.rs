@@ -29,7 +29,8 @@ fn set_key(key: &str) {
     let to_write = format!("OPENAI_KEY={}", key);
     match config_file.write_all(to_write.as_bytes()) {
       Ok(()) => {
-        info!("OPENAI_KEY set to {} successfully", key);
+        info!("OPENAI_KEY set to {} successfully ✅", key);
+        std::process::exit(0);
       },
       Err(err) => {
         error!("Error writing Config file: {}", err);

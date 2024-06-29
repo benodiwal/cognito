@@ -20,3 +20,6 @@ tokio = { workspace = true }
 reqwest = { workspace = true }
 dirs = "5.0.1"
 dotenv = "0.15.0"
+serde = { workspace = true }
+serde_derive = { workspace = true }
+serde_json = { workspace = true }
