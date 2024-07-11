@@ -1,5 +1,7 @@
 pub mod routes;
 pub mod configurations;
+pub mod services;
+pub mod utils;
 mod middlewares;
 
 use std::net::TcpListener;

@@ -2234,6 +2234,7 @@ dependencies = [
  "actix-web",
  "async-openai",
  "config",
+ "dirs",
  "log",
  "logger",
  "reqwest",
