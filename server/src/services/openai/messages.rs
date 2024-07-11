@@ -1,5 +1,4 @@
 use std::env;
-
 use async_openai::types::{ChatCompletionRequestAssistantMessage, ChatCompletionRequestMessage, ChatCompletionRequestSystemMessage, ChatCompletionRequestUserMessage, ChatCompletionRequestUserMessageContent};
 
 fn powershell_messages() -> Vec<ChatCompletionRequestMessage> {
