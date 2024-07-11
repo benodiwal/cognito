@@ -21,5 +21,5 @@ pub async fn process_prompt(req: web::Json<PromptRequest>) -> impl Responder {
 
     let response = chat(&oac, &config, messages).await.unwrap();
 
-    HttpResponse::Ok().body(response)
+   HttpResponse::Ok().body(response)
 }
