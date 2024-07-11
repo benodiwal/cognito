@@ -1,13 +1,16 @@
-mod config;
+pub mod config;
+pub mod chats;
+pub mod messages;
 
 use async_openai::{config::OpenAIConfig, Client};
 use config::Config;
 use log::{error, warn};
 use crate::utils::configs::get_key;
+use std::error::Error;
 
 pub type OaClient = Client<OpenAIConfig>;
 
-pub fn new_oa_client() -> Result<OaClient, Box<dyn std::error::Error>> {
+pub fn get_config() -> Result<Config, Box<dyn Error>> {
     let mut config = Config::default();
     
     match get_key() {
@@ -19,9 +22,18 @@ pub fn new_oa_client() -> Result<OaClient, Box<dyn std::error::Error>> {
         },
         Err(e) => {
             error!("Error reading config file: {}", e);
+            return Err(Box::new(e));
         }
     }
 
+    if config.is_key_set() {
+        Ok(config)
+    } else {
+        Err("No OpenAI API key available".into())
+    }
+}
+
+pub fn new_oa_client(config: &Config) -> Result<OaClient, Box<dyn Error>> {
     if config.is_key_set() {
         let openai_config = OpenAIConfig::new().with_api_key(config.key().unwrap());
         Ok(Client::with_config(openai_config))
