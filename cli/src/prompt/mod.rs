@@ -1,5 +1,5 @@
 use std::fs::read_to_string;
-use crate::{args::Args, client::ApiClient};
+use crate::{args::Args, client::ApiClient, clipboard::{copy, prompt_copy_to_clipboard}};
 use log::error;
 use serde_json::json;
 
@@ -11,7 +11,9 @@ pub async fn handle_prompt(client: &ApiClient, prompt: &str) {
     let response = client.post("/process_prompt", &json_data).await;
     match response {
         Ok(res) => {
-            println!("{}", res);
+            if prompt_copy_to_clipboard(res.as_ref()).unwrap() {
+                copy(res.as_ref()).unwrap();
+            }
         },
         Err(err) => {
             error!("Error in processing prompt: {}", err);

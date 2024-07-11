@@ -5,6 +5,7 @@ mod client;
 mod config;
 mod env;
 mod constants;
+mod clipboard;
 
 use client::{new_api_client, ApiClient};
 use config::{check_config, set_config};
